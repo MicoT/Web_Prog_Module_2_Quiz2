@@ -24,18 +24,7 @@
 //          if (charCode > 31 && (charCode < 48 || charCode > 57))
 //          return false;
 // }
-window.onscroll = function() {myFunction()};
 
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
 // ----------------------------------------------------------------------------------------
 function userGet(userInt) {
   var user = {};
@@ -81,8 +70,8 @@ function calo(bmr, act) {
 }
 // ----------------------------------------------------------------------------------------
 function displayCalories(result) {
-  var totalCalcResult = document.getElementById('caloriesResult');
-  totalCalcResult.textContent = Math.round(result * 100) / 100;
+  var caltotal = document.getElementById('finalcal');
+  caltotal.textContent = Math.round(result * 100) / 100;
 }
 // ----------------------------------------------------------------------------------------
 var user = userGet(window.location.search);
@@ -93,28 +82,28 @@ displayCalories(totalCalories);
 
 document.getElementById('cal').addEventListener('submit', function(ev) {
   ev.preventDefault();
-
-  var foodLogs = document.getElementById('list');
+  
+  var lists = document.getElementById('list');
   var children = ev.target.children;
-  var foodName = children.namedItem('food-name').value;
+  var carb = children.namedItem('fInput').value;
   var calories = parseFloat(children.namedItem('calories').value);
 
-  var foodLog = document.createElement('div');
-  foodLog.classList.add('row', 'card');
-  foodLog.style = 'justify-content: space-between; margin-top: 10px;';
+  var list = document.createElement('div');
+  list.classList.add('row', 'card');
+  list.style = 'justify-content: space-between; margin-top: 10px;';
 
-  var foodLogName = document.createElement('p');
-  foodLogName.textContent = foodName;
+  var listName = document.createElement('p');
+  listName.textContent = carb;
 
-  var foodLogCalories = document.createElement('p');
-  foodLogCalories.textContent = calories + 'cal';
+  var listCalories = document.createElement('p');
+  listCalories.textContent = calories + 'cal';
   
-  foodLog.appendChild(foodLogName);
-  foodLog.appendChild(foodLogCalories);
-  foodLogs.appendChild(foodLog);
+  list.appendChild(listName);
+  list.appendChild(listCalories);
+  lists.appendChild(list);
 
-  var totalCalcResult = document.getElementById('caloriesResult');
-  displayCalories(parseFloat(totalCalcResult.textContent) - calories);
+  var caltotal = document.getElementById('finalcal');
+  displayCalories(parseFloat(caltotal.textContent) - calories);
 
   ev.target.reset();
 });

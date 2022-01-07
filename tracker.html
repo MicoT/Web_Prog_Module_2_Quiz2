@@ -86,18 +86,16 @@
     <title>CALORIE TRACKER</title>
 </head>
 <body class="contain">
-    <div class="header" id="myHeader">
-        <h2>KEEP TRACK OF YOUR DIET</h2>
-    </div>
+    
     <div>
         <div class="row" id="displayer">
             <h1>Your total calories are:</h1>
-            <h1 id="caloriesResult"> ---</h1>
+            <h1 id="finalcal"></h1>
         </div>
         <div class="tracker" id="displayer">
             <div class="inner-tracker">
                 <form id="cal" class="column form-gap">
-                    <input type="text" class="" name="food-name" id="food-name" placeholder="Input a food"/>
+                    <input type="text" class="" name="fInput" id="fInput" placeholder="Input a food"/>
                     <input type="number" class="" name="calories" id="calorie-amount" placeholder="Total Calories" min=1>
                     <input type="submit" value="Calculate" class="button flex center">
                 </form>
